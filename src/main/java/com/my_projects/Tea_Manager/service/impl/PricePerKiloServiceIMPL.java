@@ -8,6 +8,8 @@ import com.my_projects.Tea_Manager.repository.PricePerKiloRepository;
 import com.my_projects.Tea_Manager.service.PricePerKiloService;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Optional;
 
 @Service
@@ -18,13 +20,31 @@ public class PricePerKiloServiceIMPL implements PricePerKiloService {
     }
     @Override
     public PricePerKiloDTO save(PricePerKiloDTO pricePerKilo) {
+
+        // Validate that price_per_kilo is positive
+        if (pricePerKilo.getPrice_per_kilo() == null || pricePerKilo.getPrice_per_kilo().compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("The price_per_kilo must be a positive value.");
+        }
+        // Validate that priceType is a valid enum value
+        PriceTypeENUM priceTypeEnum;
+        try {
+            priceTypeEnum = PriceTypeENUM.fromValue(pricePerKilo.getPriceType());
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Invalid priceType. Must be one of: " +
+                    Arrays.toString(Arrays.stream(PriceTypeENUM.values())
+                            .map(PriceTypeENUM::getValue)
+                            .toArray()));
+        }
+
         PricePerKiloEntity pricePerKiloEntity = new PricePerKiloEntity();
         pricePerKiloEntity.setPrice_per_kilo(pricePerKilo.getPrice_per_kilo());
         pricePerKiloEntity.setPriceType(pricePerKilo.getPriceType());
         pricePerKiloEntity.setEffective_date(pricePerKilo.getEffective_date());
         pricePerKiloEntity.setEnd_date(pricePerKilo.getEnd_date());
         try{
+            // Save the entity
             PricePerKiloEntity save = pricePerKiloRepository.save(pricePerKiloEntity);
+            // Map saved entity to DTO
             pricePerKilo.setId(save.getId());
             return pricePerKilo;
         } catch (Exception e){
