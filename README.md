@@ -81,47 +81,82 @@ TeaManagerAPI/
 
 ---
 
-## Usage
+[//]: # (## Usage)
 
-### Example Salary Calculation
+[//]: # ()
+[//]: # (### Example Salary Calculation)
 
-1. Add an employee:
-   ```json
-   POST /api/employees
-   {
-     "name": "John Doe",
-     "role": "Picker"
-   }
-   ```
-2. Add a tea picking record:
-   ```json
-   POST /api/tea-picking-records
-   {
-     "employeeId": 1,
-     "weightPicked": 25,
-     "date": "2025-01-01"
-   }
-   ```
-3. Set price per kilo:
-   ```json
-   POST /api/price-per-kilo
-   {
-     "pricePerKilo": 100,
-     "effectiveDate": "2025-01-01",
-     "endDate": "2025-01-31"
-   }
-   ```
-4. Generate salary:
-   ```json
-   POST /api/salary/generate
-   {
-     "employeeId": 1,
-     "year": 2025,
-     "month": "JANUARY"
-   }
-   ```
+[//]: # ()
+[//]: # (1. Add an employee:)
 
----
+[//]: # (   ```json)
+
+[//]: # (   POST /api/employees)
+
+[//]: # (   {)
+
+[//]: # (     "name": "John Doe",)
+
+[//]: # (     "role": "Picker")
+
+[//]: # (   })
+
+[//]: # (   ```)
+
+[//]: # (2. Add a tea picking record:)
+
+[//]: # (   ```json)
+
+[//]: # (   POST /api/tea-picking-records)
+
+[//]: # (   {)
+
+[//]: # (     "employeeId": 1,)
+
+[//]: # (     "weightPicked": 25,)
+
+[//]: # (     "date": "2025-01-01")
+
+[//]: # (   })
+
+[//]: # (   ```)
+
+[//]: # (3. Set price per kilo:)
+
+[//]: # (   ```json)
+
+[//]: # (   POST /api/price-per-kilo)
+
+[//]: # (   {)
+
+[//]: # (     "pricePerKilo": 100,)
+
+[//]: # (     "effectiveDate": "2025-01-01",)
+
+[//]: # (     "endDate": "2025-01-31")
+
+[//]: # (   })
+
+[//]: # (   ```)
+
+[//]: # (4. Generate salary:)
+
+[//]: # (   ```json)
+
+[//]: # (   POST /api/salary/generate)
+
+[//]: # (   {)
+
+[//]: # (     "employeeId": 1,)
+
+[//]: # (     "year": 2025,)
+
+[//]: # (     "month": "JANUARY")
+
+[//]: # (   })
+[//]: # (   ```)
+
+[//]: # (---)
 
 ## Running Tests
 
