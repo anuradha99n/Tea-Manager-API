@@ -12,14 +12,14 @@ public class PricePerKiloEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
-    private BigDecimal price_per_kilo;
+    private BigDecimal pricePerKilo;
     @Column(nullable = false)
-    private LocalDate effective_date;
+    private LocalDate effectiveDate;
     @Column(nullable = true)
-    private LocalDate end_date;
+    private LocalDate endDate;
 //    @Enumerated(EnumType.ORDINAL)
-    @Column(name = "price_type", nullable = false)
-    private Integer price_type;
+    @Column(nullable = false)
+    private Integer priceType;
 
     public Long getId() {
         return id;
@@ -30,34 +30,34 @@ public class PricePerKiloEntity {
     }
 
     public BigDecimal getPrice_per_kilo() {
-        return price_per_kilo;
+        return pricePerKilo;
     }
 
     public void setPrice_per_kilo(BigDecimal price_per_kilo) {
-        this.price_per_kilo = price_per_kilo;
+        this.pricePerKilo = price_per_kilo;
     }
 
     public LocalDate getEffective_date() {
-        return effective_date;
+        return effectiveDate;
     }
 
     public void setEffective_date(LocalDate effective_date) {
-        this.effective_date = effective_date;
+        this.effectiveDate = effective_date;
     }
 
     public LocalDate getEnd_date() {
-        return end_date;
+        return endDate;
     }
 
     public void setEnd_date(LocalDate end_date) {
-        this.end_date = end_date;
+        this.endDate = end_date;
     }
 
     public Integer getPriceType() {
-        return price_type;
+        return priceType;
     }
 
     public void setPriceType(Integer priceType) {
-        this.price_type = priceType;
+        this.priceType = priceType;
     }
 }
