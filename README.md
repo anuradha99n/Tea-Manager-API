@@ -59,13 +59,6 @@ $ cd TeaManagerAPI
    $ mvn spring-boot:run
    ```
 
-### API Documentation
-
-After running the application, the API documentation will be available at:
-```
-http://localhost:8080/swagger-ui/index.html
-```
-
 ---
 
 ## Project Structure
