@@ -9,6 +9,7 @@ import com.my_projects.Tea_Manager.service.PricePerKiloService;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -83,5 +84,27 @@ public class PricePerKiloServiceIMPL implements PricePerKiloService {
     @Override
     public PricePerKiloDTO update(PricePerKiloDTO pricePerKilo) {
         return null;
+    }
+
+    @Override
+    public PricePerKiloDTO getSinglePricePerKiloByDateAndType(LocalDate effectiveDate, LocalDate endDate, Integer priceType) {
+        Optional<PricePerKiloEntity> optionalPricePerKiloEntity = pricePerKiloRepository.findFirstByEffectiveDateBetweenAndPriceType(effectiveDate, endDate, priceType);
+        PricePerKiloDTO pricePerKiloDTO = new PricePerKiloDTO();
+        if(optionalPricePerKiloEntity.isPresent()){
+            PricePerKiloEntity pricePerKilo = optionalPricePerKiloEntity.get();
+            try {
+                pricePerKiloDTO.setId(pricePerKilo.getId());
+                pricePerKiloDTO.setPrice_per_kilo(pricePerKilo.getPrice_per_kilo());
+                pricePerKiloDTO.setEffective_date(pricePerKilo.getEffective_date());
+                pricePerKiloDTO.setEnd_date(pricePerKilo.getEnd_date());
+                pricePerKiloDTO.setPriceType(pricePerKilo.getPriceType());
+                return pricePerKiloDTO;
+            } catch (Exception e){
+                e.printStackTrace();
+                throw e;
+            }
+        } else{
+            throw new ResourceNotFoundException("Price does not exist.");
+        }
     }
 }
