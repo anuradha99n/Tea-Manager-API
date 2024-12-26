@@ -7,6 +7,8 @@ import com.my_projects.Tea_Manager.repository.TeaPickingRecordRepository;
 import com.my_projects.Tea_Manager.service.TeaPickingRecordService;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -86,5 +88,12 @@ public class TeaPickingRecordServiceIMPL implements TeaPickingRecordService {
             }
         }
         return null;
+    }
+
+    @Override
+    public BigDecimal getTotalKilosPicked(List<TeaPickingRecordDTO> teaPickingRecordDTOList) {
+        return teaPickingRecordDTOList.stream()
+                .map(TeaPickingRecordDTO::getKilos_picked)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }
