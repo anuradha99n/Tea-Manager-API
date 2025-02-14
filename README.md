@@ -76,9 +76,10 @@ TeaManagerAPI/
     |    |         |└── repositories/ # JPA Repositories
     |    |└── resources/
     |         application.properties # Configuration
-    |└── test/
-          |└── playwright/          # API Test Scripts
 ```
+[//]: # (    |└── test/)
+
+[//]: # (          |└── playwright/          # API Test Scripts)
 
 ---
 
