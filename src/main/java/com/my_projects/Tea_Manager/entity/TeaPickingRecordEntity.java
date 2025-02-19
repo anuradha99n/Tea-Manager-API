@@ -27,7 +27,7 @@ public class TeaPickingRecordEntity {
     private EmployeeEntity employee;
 
     @Column(nullable = false)
-    private BigDecimal pickerAmount;
+    private BigDecimal pickedAmount;
     @ManyToOne
     @JoinColumn(name = "entered_user_id", nullable = false)
     private EmployeeEntity enteredUser;
