@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.CollectionId;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -39,27 +38,28 @@ public class SalaryEntity {
     private EmployeeEntity createdUser;
     @Column(nullable = false)
     private LocalDate createdDate;
+
     @ManyToOne
-    @Column(name = "approved_user_id")
+    @JoinColumn(name = "approved_user_id", nullable = true)
     private EmployeeEntity approvedUser;
     @Column(nullable = true)
     private LocalDate approvedDate;
 
     @ManyToOne
-    @Column(name = "paid_user_id")
+    @JoinColumn(name = "paid_user_id")
     private EmployeeEntity paidUser;
     @Column(nullable = true)
     private LocalDate paidDate;
 
     @ManyToOne
-    @Column(name = "rejected_user_id")
+    @JoinColumn(name = "rejected_user_id")
     private EmployeeEntity rejectedUser;
     @Column(nullable = true)
     private LocalDate rejectedDate;
     private String rejectedReason;
 
     @ManyToOne
-    @Column(name = "updated_user_id")
+    @JoinColumn(name = "updated_user_id")
     private EmployeeEntity updatedUser;
     @Column(nullable = true)
     private LocalDate updatedDate;
