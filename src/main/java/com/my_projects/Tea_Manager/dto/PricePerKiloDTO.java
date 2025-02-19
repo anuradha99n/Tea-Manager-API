@@ -1,21 +1,23 @@
-package com.my_projects.Tea_Manager.entity;
+package com.my_projects.Tea_Manager.dto;
 
 import com.my_projects.Tea_Manager.enums.PriceTypeENUM;
-import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
-@Entity
-@Table(name = "price_per_kilo")
-public class PricePerKiloEntity {
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class PricePerKiloDTO {
 
-    @Id
     private UUID id;
     private BigDecimal price;
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 50)
     private PriceTypeENUM priceType;
     private LocalDate effectiveDate;
     private LocalDate endDate;
