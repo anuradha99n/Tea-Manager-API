@@ -12,6 +12,7 @@ import java.util.UUID;
 public class PricePerKiloEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private BigDecimal price;
     @Enumerated(EnumType.STRING)

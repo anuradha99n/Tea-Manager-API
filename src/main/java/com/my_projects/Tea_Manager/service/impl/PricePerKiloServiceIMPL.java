@@ -19,7 +19,21 @@ public class PricePerKiloServiceIMPL implements PricePerKiloService {
     private PricePerKiloRepo pricePerKiloRepo;
     @Override
     public PricePerKiloDTO createPricePerKilo(PricePerKiloDTO pricePerKiloDTO) {
-        return null;
+        PricePerKiloEntity entity = new PricePerKiloEntity();
+        entity.setPrice(pricePerKiloDTO.getPrice());
+        entity.setPriceType(pricePerKiloDTO.getPriceType());
+        entity.setEffectiveDate(pricePerKiloDTO.getEffectiveDate());
+        entity.setEndDate(pricePerKiloDTO.getEndDate());
+        entity.setEnteredDate(pricePerKiloDTO.getEnteredDate());
+
+        try{
+            PricePerKiloEntity savedEntity = pricePerKiloRepo.save(entity);
+            pricePerKiloDTO.setId(savedEntity.getId());
+            return pricePerKiloDTO;
+        } catch (Exception ex){
+            ex.printStackTrace();
+            throw ex;
+        }
     }
 
     @Override

@@ -26,7 +26,7 @@ public class DesignationAPI {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity getDesignation(@PathVariable("id") UUID id){
+    public ResponseEntity getDesignation(@PathVariable("id") String id){
         try{
             DesignationDTO designationDTO = designationService.getDesignationById(id);
             ApiResponse<DesignationDTO> response = new ApiResponse<>(

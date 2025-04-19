@@ -25,8 +25,6 @@ public class EmployeeServiceIMPL implements EmployeeService {
     @Autowired
     private DesignationRepo designationRepo;
 
-//    @Autowired
-//    private DesignationService designationService;
     @Override
     public EmployeeDTO createEmployee(EmployeeDTO employeeDTO) {
 
@@ -38,18 +36,9 @@ public class EmployeeServiceIMPL implements EmployeeService {
         entity.setIsActive(employeeDTO.getIsActive());
         if(employeeDTO.getDesignationId() != null){
             Optional<DesignationEntity> optionalDesignationEntity = designationRepo.findById(employeeDTO.getDesignationId());
-            //Optional<DesignationDTO> optionalDesignationEntity = designationService.getDesignationById(employeeDTO.getDesignationId());
-            DesignationDTO designationDTO = new DesignationDTO();
             if(optionalDesignationEntity.isPresent()){
                 DesignationEntity designationEntity = optionalDesignationEntity.get();
                 try {
-//                    designationDTO.setId(designationEntity.getId());
-//                    designationDTO.setDesignationName(designationEntity.getDesignationName());
-//                    designationDTO.setCreatedBy(designationEntity.getCreatedBy());
-//                    designationDTO.setActive(designationEntity.isActive());
-//                    designationDTO.setCreatedDate(designationEntity.getCreatedDate());
-//
-//                    entity.setDesignation(designationDTO);
                     entity.setDesignation(designationEntity);
                 } catch (Exception ex){
                     ex.printStackTrace();
@@ -74,7 +63,8 @@ public class EmployeeServiceIMPL implements EmployeeService {
     }
 
     @Override
-    public EmployeeDTO getEmployeeById(UUID id) {
+    public EmployeeDTO getEmployeeById(String id) {
+        System.out.println("🔍 Searching for employee with ID: " + id);
         Optional<EmployeeEntity> optionalEmployeeEntity = employeeRepo.findById(id);
         EmployeeDTO employeeDTO = new EmployeeDTO();
         if(optionalEmployeeEntity.isPresent()){
@@ -87,6 +77,7 @@ public class EmployeeServiceIMPL implements EmployeeService {
                 employeeDTO.setIsActive(employeeEntity.getIsActive());
                 employeeDTO.setAddress(employeeEntity.getAddress());
                 employeeDTO.setDesignationId(employeeEntity.getDesignation().getId());
+
                 return employeeDTO;
             } catch (Exception ex){
                 ex.printStackTrace();
@@ -103,7 +94,7 @@ public class EmployeeServiceIMPL implements EmployeeService {
     }
 
     @Override
-    public EmployeeDTO updateEmployee(UUID id, EmployeeDTO employeeDTO) {
+    public EmployeeDTO updateEmployee(String id, EmployeeDTO employeeDTO) {
         return null;
     }
 }

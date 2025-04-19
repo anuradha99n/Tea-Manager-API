@@ -38,7 +38,7 @@ public class DesignationServiceIMPL implements DesignationService {
     }
 
     @Override
-    public DesignationDTO getDesignationById(UUID id) {
+    public DesignationDTO getDesignationById(String id) {
         Optional<DesignationEntity> optionalDesignationEntity = designationRepo.findById(id);
         DesignationDTO designationDTO = new DesignationDTO();
         if(optionalDesignationEntity.isPresent()){
@@ -55,17 +55,17 @@ public class DesignationServiceIMPL implements DesignationService {
                 throw ex;
             }
         } else {
-            throw new ResourceNotFoundException("Designation with ID : " + id + "not exist.");
+            throw new ResourceNotFoundException("Designation with ID : " + id + " not exist.");
         }
     }
 
     @Override
-    public List<DesignationDTO> updateDesignation(UUID id, DesignationDTO designationDTO) {
+    public List<DesignationDTO> updateDesignation(String id, DesignationDTO designationDTO) {
         return null;
     }
 
     @Override
-    public boolean deleteDesignation(UUID id) {
+    public boolean deleteDesignation(String id) {
         return false;
     }
 }
