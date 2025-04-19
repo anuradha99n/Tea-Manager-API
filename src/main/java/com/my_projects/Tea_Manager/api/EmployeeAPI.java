@@ -19,7 +19,7 @@ public class EmployeeAPI {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity getEmployee(@PathVariable("id") UUID id){
+    public ResponseEntity getEmployee(@PathVariable("id") String id){
         try{
             EmployeeDTO employeeDTO = employeeService.getEmployeeById(id);
             ApiResponse<EmployeeDTO> response = new ApiResponse<>(

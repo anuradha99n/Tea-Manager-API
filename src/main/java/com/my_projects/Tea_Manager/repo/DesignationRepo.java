@@ -9,7 +9,7 @@ import java.util.UUID;
 import java.util.function.Supplier;
 
 @Repository
-public interface DesignationRepo extends JpaRepository<DesignationEntity, UUID> {
+public interface DesignationRepo extends JpaRepository<DesignationEntity, String> {
 
-    Optional<DesignationEntity>findById(UUID id);
+    Optional<DesignationEntity>findById(String id);
 }

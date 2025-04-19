@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public interface EmployeeService {
     EmployeeDTO createEmployee(EmployeeDTO employeeDTO);
-    EmployeeDTO getEmployeeById(UUID id);
+    EmployeeDTO getEmployeeById(String id);
     List<EmployeeDTO> getAllEmployee();
-    EmployeeDTO updateEmployee(UUID id, EmployeeDTO employeeDTO);
+    EmployeeDTO updateEmployee(String id, EmployeeDTO employeeDTO);
 }

@@ -9,8 +9,8 @@ import java.util.UUID;
 
 public interface DesignationService {
     DesignationDTO createDesignation(DesignationDTO designationDTO);
-    DesignationDTO getDesignationById(UUID id);
-    List<DesignationDTO> updateDesignation(UUID id, DesignationDTO designationDTO);
+    DesignationDTO getDesignationById(String id);
+    List<DesignationDTO> updateDesignation(String id, DesignationDTO designationDTO);
 
-    boolean deleteDesignation(UUID id);
+    boolean deleteDesignation(String id);
 }
