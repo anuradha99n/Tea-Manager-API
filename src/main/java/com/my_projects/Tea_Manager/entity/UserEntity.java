@@ -16,7 +16,7 @@ public class UserEntity {
     @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    private String id;
     @Column(nullable = false, unique = true, length = 50)
     private String userName;
     @Column(nullable = false)
