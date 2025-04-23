@@ -12,6 +12,7 @@ import com.my_projects.Tea_Manager.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -90,7 +91,18 @@ public class EmployeeServiceIMPL implements EmployeeService {
 
     @Override
     public List<EmployeeDTO> getAllEmployee() {
-        return null;
+        List<EmployeeEntity> employeeEntityList = employeeRepo.findAll();
+        List<EmployeeDTO> employeeDTOList = new ArrayList<>();
+
+        for(EmployeeEntity employee : employeeEntityList){
+            EmployeeDTO dto = new EmployeeDTO();
+            dto.setId(employee.getId());
+            dto.setName(employee.getName());
+            dto.setAddress(employee.getAddress());
+
+            employeeDTOList.add(dto);
+        }
+        return employeeDTOList;
     }
 
     @Override

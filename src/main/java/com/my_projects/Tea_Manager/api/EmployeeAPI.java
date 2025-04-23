@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -80,6 +81,32 @@ public class EmployeeAPI {
             );
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
+    }
 
+    @GetMapping
+    public ResponseEntity getAllEmployees(){
+        try{
+            List<EmployeeDTO> employeeDTOList = employeeService.getAllEmployee();
+            ApiResponse<List<EmployeeDTO>> response = new ApiResponse<>(
+                    HttpStatus.OK.toString(),
+                    "Employee list retrieved successfully.",
+                    employeeDTOList
+            );
+            return ResponseEntity.ok(response);
+        } catch (ResourceNotFoundException ex){
+            ApiResponse<Object> response = new ApiResponse<>(
+                    HttpStatus.NOT_FOUND.toString(),
+                    ex.getMessage(),
+                    null
+            );
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        } catch (Exception ex){
+            ApiResponse<Object> response = new ApiResponse<>(
+                    HttpStatus.INTERNAL_SERVER_ERROR.toString(),
+                    ex.getMessage(),
+                    null
+            );
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
     }
 }
