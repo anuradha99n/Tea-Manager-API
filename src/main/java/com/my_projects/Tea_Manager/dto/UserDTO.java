@@ -20,43 +20,4 @@ public class UserDTO {
 
     // Getters and Setters
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public boolean getIsActive() {
-        return isActive;
-    }
-
-    public void setIsActive(boolean active) {
-        isActive = active;
-    }
-
-    public RoleENUM getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(RoleENUM roleId) {
-        this.roleId = roleId;
-    }
-
-    public EmployeeDTO getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(EmployeeDTO employee) {
-        this.employee = employee;
-    }
 }
