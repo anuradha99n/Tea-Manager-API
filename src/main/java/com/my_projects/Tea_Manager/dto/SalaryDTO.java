@@ -16,7 +16,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class SalaryDTO {
 
-    private UUID id;
+    private String id;
     private BigDecimal totalPickedTea;
     private BigDecimal salary;
     private SalaryStatusENUM status;
