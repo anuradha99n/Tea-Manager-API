@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
@@ -21,6 +22,6 @@ public class PricePerKiloDTO {
     private PriceTypeENUM priceType;
     private LocalDate effectiveDate;
     private LocalDate endDate;
-    private LocalDate enteredDate;
+    private LocalDateTime enteredDate;
     //private UserEntity enteredUser;
 }

@@ -99,6 +99,10 @@ public class EmployeeServiceIMPL implements EmployeeService {
             dto.setId(employee.getId());
             dto.setName(employee.getName());
             dto.setAddress(employee.getAddress());
+            dto.setContact(employee.getContact());
+            dto.setJoinedDate(employee.getJoinedDate());
+            dto.setIsActive(employee.getIsActive());
+            dto.setDesignationId(employee.getDesignation().getId());
 
             employeeDTOList.add(dto);
         }
