@@ -26,6 +26,7 @@ public class UserEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 50)
     private RoleENUM roleId;
+
     @OneToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private EmployeeEntity employee;

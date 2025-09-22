@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,11 +25,13 @@ public class PricePerKiloServiceIMPL implements PricePerKiloService {
         entity.setPriceType(pricePerKiloDTO.getPriceType());
         entity.setEffectiveDate(pricePerKiloDTO.getEffectiveDate());
         entity.setEndDate(pricePerKiloDTO.getEndDate());
-        entity.setEnteredDate(pricePerKiloDTO.getEnteredDate());
+        //entity.setEnteredDate(pricePerKiloDTO.getEnteredDate());
+        entity.setEnteredDate(LocalDateTime.now());
 
         try{
             PricePerKiloEntity savedEntity = pricePerKiloRepo.save(entity);
             pricePerKiloDTO.setId(savedEntity.getId());
+            pricePerKiloDTO.setEnteredDate(savedEntity.getEnteredDate());
             return pricePerKiloDTO;
         } catch (Exception ex){
             ex.printStackTrace();
