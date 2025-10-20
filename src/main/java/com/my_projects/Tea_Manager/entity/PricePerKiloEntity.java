@@ -18,13 +18,17 @@ public class PricePerKiloEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
-    private BigDecimal price;
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 50)
-    private PriceTypeENUM priceType;
+    private String pricePerKiloId;
     private LocalDate effectiveDate;
     private LocalDate endDate;
     private LocalDateTime enteredDate;
-    //private UserEntity enteredUser;
+
+    @ManyToOne
+    @JoinColumn(name = "price_type_id")
+    private PriceTypeEntity priceType;
+//    private UserEntity enteredUser;
+//    private BigDecimal price;
+//    @Enumerated(EnumType.STRING)
+//    @Column(nullable = false, length = 50)
+//    private PriceTypeENUM priceType;
 }

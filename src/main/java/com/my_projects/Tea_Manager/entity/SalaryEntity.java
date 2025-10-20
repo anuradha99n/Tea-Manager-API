@@ -21,23 +21,39 @@ public class SalaryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private String salaryId;
     @Column(nullable = false)
-    private BigDecimal totalPickedTea;
+    private String employeeId;
     @Column(nullable = false)
     private BigDecimal salary;
+    @Column(nullable = false)
+    private Integer salaryYear;
+    @Column(nullable = false)
+    private Integer salaryMonth;
+    @Column(nullable = false)
+    private BigDecimal totalPickedTea;
+//    @Column(nullable = false)
+//    private String pricePerKiloVersionId;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private SalaryStatusENUM status;
+
+
     @ManyToOne
-    @JoinColumn(name = "price_per_kilo_id", nullable = false)
-    private PricePerKiloEntity pricePerKilo;
+    @JoinColumn(name = "price_per_kilo_version_id", nullable = false)
+    private PricePerKiloVersionEntity pricePerKiloVersion;
 
     @ManyToOne
     @JoinColumn(name = "created_user_id", nullable = false)
     private EmployeeEntity createdUser;
     @Column(nullable = false)
     private LocalDate createdDate;
+
+    @ManyToOne
+    @JoinColumn(name = "updated_user_id")
+    private EmployeeEntity updatedUser;
+    @Column(nullable = true)
+    private LocalDate updatedDate;
 
     @ManyToOne
     @JoinColumn(name = "approved_user_id", nullable = true)
@@ -57,12 +73,6 @@ public class SalaryEntity {
     @Column(nullable = true)
     private LocalDate rejectedDate;
     private String rejectedReason;
-
-    @ManyToOne
-    @JoinColumn(name = "updated_user_id")
-    private EmployeeEntity updatedUser;
-    @Column(nullable = true)
-    private LocalDate updatedDate;
 
     @PrePersist
     protected void onCreate(){

@@ -13,10 +13,10 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface PricePerKiloRepo extends JpaRepository<PricePerKiloEntity, UUID> {
+public interface PricePerKiloRepo extends JpaRepository<PricePerKiloEntity, String> {
 
     @Override
-    Optional<PricePerKiloEntity> findById(UUID uuid);
+    Optional<PricePerKiloEntity> findById(String id);
 
     @Query("SELECT p FROM PricePerKiloEntity p WHERE p.effectiveDate BETWEEN :effectiveDate AND :endDate AND p.priceType = :priceType")
     List<PricePerKiloEntity> getPricePerKiloBetweenDatesAndType(

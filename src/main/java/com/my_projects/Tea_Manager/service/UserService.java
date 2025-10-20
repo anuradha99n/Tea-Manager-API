@@ -1,5 +1,6 @@
 package com.my_projects.Tea_Manager.service;
 
+import com.my_projects.Tea_Manager.dto.LoginDTO;
 import com.my_projects.Tea_Manager.dto.UserDTO;
 
 import java.util.List;
@@ -12,4 +13,5 @@ public interface UserService {
     UserDTO updateUser(UUID id, UserDTO userDTO);
 
     boolean deleteUser(UUID id);
+    UserDTO Login(LoginDTO loginDTO);
 }

@@ -55,7 +55,7 @@ public class EmployeeServiceIMPL implements EmployeeService {
         // Save the EmployeeEntity
         try {
             EmployeeEntity savedEntity = employeeRepo.save(entity);
-            employeeDTO.setId(savedEntity.getId());
+            employeeDTO.setId(savedEntity.getEmployeeId());
             return employeeDTO;
         } catch (Exception ex){
             ex.printStackTrace();
@@ -71,13 +71,13 @@ public class EmployeeServiceIMPL implements EmployeeService {
         if(optionalEmployeeEntity.isPresent()){
             EmployeeEntity employeeEntity = optionalEmployeeEntity.get();
             try {
-                employeeDTO.setId(employeeEntity.getId());
+                employeeDTO.setId(employeeEntity.getEmployeeId());
                 employeeDTO.setName(employeeEntity.getName());
                 employeeDTO.setContact(employeeEntity.getContact());
                 employeeDTO.setJoinedDate(employeeEntity.getJoinedDate());
                 employeeDTO.setIsActive(employeeEntity.getIsActive());
                 employeeDTO.setAddress(employeeEntity.getAddress());
-                employeeDTO.setDesignationId(employeeEntity.getDesignation().getId());
+                employeeDTO.setDesignationId(employeeEntity.getDesignation().getDesignationId());
 
                 return employeeDTO;
             } catch (Exception ex){
@@ -96,13 +96,13 @@ public class EmployeeServiceIMPL implements EmployeeService {
 
         for(EmployeeEntity employee : employeeEntityList){
             EmployeeDTO dto = new EmployeeDTO();
-            dto.setId(employee.getId());
+            dto.setId(employee.getEmployeeId());
             dto.setName(employee.getName());
             dto.setAddress(employee.getAddress());
             dto.setContact(employee.getContact());
             dto.setJoinedDate(employee.getJoinedDate());
             dto.setIsActive(employee.getIsActive());
-            dto.setDesignationId(employee.getDesignation().getId());
+            dto.setDesignationId(employee.getDesignation().getDesignationId());
 
             employeeDTOList.add(dto);
         }

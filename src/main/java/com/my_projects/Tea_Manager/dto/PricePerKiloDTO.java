@@ -19,9 +19,10 @@ public class PricePerKiloDTO {
 
     private String id;
     private BigDecimal price;
-    private PriceTypeENUM priceType;
+    private String priceTypeId;
     private LocalDate effectiveDate;
     private LocalDate endDate;
     private LocalDateTime enteredDate;
+    private String enteredUserId;
     //private UserEntity enteredUser;
 }

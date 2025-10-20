@@ -14,25 +14,30 @@ public class DesignationEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private String designationId;
 
     @Column(nullable = false, length = 100)
     private String designationName;
     @Column(nullable = false)
-    private boolean isActive;
+    private boolean active;
 
     @Column(nullable = false)
-    private String createdBy;
+    private String createdUserId;
 
     @Column(nullable = false)
     private LocalDate createdDate;
 
+//    @ManyToOne
+//    @JoinColumn(name = "created_user_id", nullable = false)
+//    private UserEntity createdUser;
+
+
     public boolean getIsActive() {
-        return isActive;
+        return active;
     }
 
     public void setIsActive(boolean isActive) {
-        this.isActive = isActive;
+        this.active = isActive;
     }
 
 }

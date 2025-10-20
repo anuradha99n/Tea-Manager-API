@@ -15,8 +15,9 @@ public class UserDTO {
     private String id;
     private String userName;
     private boolean isActive;
-    private RoleENUM roleId;
-    private EmployeeDTO employee;
+    private String roleId;
+    private String employeeId;
+    private String password;
 
     // Getters and Setters
 

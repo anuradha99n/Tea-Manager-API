@@ -18,7 +18,7 @@ public class RoleEntity {
     @Column(nullable = false)
     private String roleName;
     @Column(nullable = false)
-    private boolean isActive;
+    private boolean active;
 
     @ManyToOne
     @JoinColumn(name = "created_user_id", nullable = false)
@@ -36,7 +36,7 @@ public class RoleEntity {
     protected void onCreate(){
 
         createdDate = LocalDate.now();
-        isActive = true;
+        active = true;
     }
 
 

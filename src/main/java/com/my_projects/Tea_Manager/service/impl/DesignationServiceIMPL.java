@@ -22,12 +22,12 @@ public class DesignationServiceIMPL implements DesignationService {
         DesignationEntity entity = new DesignationEntity();
         entity.setDesignationName(designationDTO.getDesignationName());
         entity.setIsActive(designationDTO.getIsActive());
-        entity.setCreatedBy(designationDTO.getCreatedBy());
+        entity.setCreatedUserId(designationDTO.getCreatedBy());
         entity.setCreatedDate(designationDTO.getCreatedDate());
 
         try {
             DesignationEntity savedEntity = designationRepo.save(entity);
-            designationDTO.setId(savedEntity.getId());
+            designationDTO.setId(savedEntity.getDesignationId());
             return designationDTO;
         } catch (Exception ex){
             ex.printStackTrace();
@@ -44,10 +44,10 @@ public class DesignationServiceIMPL implements DesignationService {
         if(optionalDesignationEntity.isPresent()){
             DesignationEntity designationEntity = optionalDesignationEntity.get();
             try {
-                designationDTO.setId(designationEntity.getId());
+                designationDTO.setId(designationEntity.getDesignationId());
                 designationDTO.setDesignationName(designationEntity.getDesignationName());
                 designationDTO.setIsActive(designationEntity.getIsActive());
-                designationDTO.setCreatedBy(designationEntity.getCreatedBy());
+                designationDTO.setCreatedBy(designationEntity.getCreatedUserId());
                 designationDTO.setCreatedDate(designationEntity.getCreatedDate());
                 return designationDTO;
             } catch (Exception ex){

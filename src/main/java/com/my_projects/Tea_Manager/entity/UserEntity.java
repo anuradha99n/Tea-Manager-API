@@ -5,8 +5,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.UUID;
-
 
 @Entity
 @Getter
@@ -21,22 +19,19 @@ public class UserEntity {
     private String userName;
     @Column(nullable = false)
     private String password;
-    @Column(nullable = false)
-    private boolean isActive;
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 50)
-    private RoleENUM roleId;
+    @Column(name = "is_active",nullable = false)
+    private boolean active;
 
     @OneToOne
-    @JoinColumn(name = "employee_id", referencedColumnName = "id")
+    @JoinColumn(name = "employee_id", referencedColumnName = "employeeId")
     private EmployeeEntity employee;
 
     public String getPassword() {
         return password;
     }
 
-    public boolean getIActive() {
-        return isActive;
+    public boolean getIsActive() {
+        return active;
     }
 
     public EmployeeEntity getEmployee() {

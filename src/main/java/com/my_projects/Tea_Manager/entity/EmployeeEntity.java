@@ -14,7 +14,8 @@ public class EmployeeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @Column(length = 36)
+    private String employeeId;
 
     @Column(nullable = false, length = 100)
     private String name;
@@ -22,7 +23,7 @@ public class EmployeeEntity {
     @Column(nullable = false)
     private LocalDate joinedDate;
     @Column(nullable = false)
-    private boolean isActive;
+    private boolean active;
 
     @Column(length = 255)
     private String address;
@@ -40,11 +41,11 @@ public class EmployeeEntity {
     public UserEntity getUser() { return user; }
 
     public boolean getIsActive() {
-        return isActive;
+        return active;
     }
 
 
     public void setIsActive(boolean isActive) {
-        this.isActive = isActive;
+        this.active = isActive;
     }
 }
