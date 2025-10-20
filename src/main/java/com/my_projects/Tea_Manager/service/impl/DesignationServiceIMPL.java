@@ -20,7 +20,7 @@ public class DesignationServiceIMPL implements DesignationService {
     @Override
     public DesignationDTO createDesignation(DesignationDTO designationDTO) {
         DesignationEntity entity = new DesignationEntity();
-        entity.setDesignationName(designationDTO.getDesignationName());
+        entity.setDesignationName(designationDTO.getDesignationName().toUpperCase());
         entity.setIsActive(designationDTO.getIsActive());
         entity.setCreatedUserId(designationDTO.getCreatedBy());
         entity.setCreatedDate(designationDTO.getCreatedDate());
