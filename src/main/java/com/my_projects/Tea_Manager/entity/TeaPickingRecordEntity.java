@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.UUID;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tea_picking_record")
@@ -20,7 +19,7 @@ public class TeaPickingRecordEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private String teaPickingRecordId;
 
     @ManyToOne
     @JoinColumn(name = "employee_id", nullable = false)
@@ -28,16 +27,20 @@ public class TeaPickingRecordEntity {
 
     @Column(nullable = false)
     private BigDecimal pickedAmount;
+    @Column(nullable = false)
+    private BigDecimal waterWeight;
+    @Column(nullable = false)
+    private BigDecimal bagWeight;
     @ManyToOne
     @JoinColumn(name = "entered_user_id", nullable = false)
-    private EmployeeEntity enteredUser;
+    private UserEntity enteredUser;
 
     @Column(nullable = false)
-    private LocalDate enteredDate;
+    private LocalDateTime enteredDateTime;
 
     @PrePersist
     protected void onCreate(){
-        enteredDate = LocalDate.now();
+        enteredDateTime = LocalDateTime.now();
     }
 
 }
